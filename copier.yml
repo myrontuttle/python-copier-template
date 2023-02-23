@@ -1,0 +1,83 @@
+# PROMPT --------------------------------
+project_type:
+  type: str
+  help: Is your project for an application or library?
+  default: library
+  choices:
+    - application
+    - library
+  
+project_name:
+    type: str
+    help: What is the name of your project?
+    default: example_project
+    validator: >-
+        {% if not (project_name | regex_search('^[a-zA-Z][a-zA-Z0-9\_\-]+$')) %}
+        project_name must start with a letter, followed one or more letters, digits, underscores, or dashes.
+        {% endif %}
+        
+project_description:
+  type: str
+  help: Your project description
+  default: Example project
+  
+package_name:
+    type: str
+    help: What is your python package name?
+    default: example_package
+    validator: >-
+        {% if not (module_name | regex_search('^[a-zA-Z][a-zA-Z0-9\_]+$')) %}
+        module_name must start with a letter, followed one or more letters, digits or underscores all lowercase.
+        {% endif %}
+
+minimal_python_version:
+    type: str
+    help: What is the minimal python version for this project?
+    default: 3.8
+    validator: >-
+        {% if not (minimal_python_version | regex_search('^[0-9]\.[0-9]+$')) %}
+        minimal_python_version must be of the form #.# (with one or more trailing digits)
+        {% endif %}
+
+author_name:
+    type: str
+    help: Your first and last name?
+    default: Firstname Lastname
+
+author_email:
+    type: str
+    help: Your preferred email address?
+    default: name@you.com
+    
+author_username:
+  type: str
+  help: Your username (e.g. on GitHub)
+  default: "{{ author_name|lower|replace('_', '-')|replace(' ', '') }}"
+
+software_license:
+  type: str
+  help: Your project's license?
+  default: MIT License
+  choices:
+    - Apache License 2.0
+    - Eclipse Public License 2.0
+    - GNU General Public License v3.0
+    - GNU Lesser General Public License v3.0
+    - ISC License
+    - MIT License
+    - Mozilla Public License 2.0
+
+
+# CONFIGURATION -------------------------
+_subdirectory: project-template
+_envops:
+  autoescape: false
+  keep_trailing_newline: true
+# Tasks executed after project generation or update
+_tasks:
+    - "git init"
+    - "make install"
+    - "make format"
+    - "git checkout -b initial_branch"
+    - "git add ."
+    - 'git commit -m "Initial commit"'
