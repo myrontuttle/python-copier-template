@@ -47,7 +47,7 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Set up PDM
-      uses: pdm-project/setup-pdm@v2.5
+      uses: pdm-project/setup-pdm@v2.7
       with:
         python-version: ${{ matrix.python-version }}
     - name: Set cache variables
