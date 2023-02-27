@@ -32,11 +32,11 @@ jobs:
         include:
           - name: Base example
             module_name: 'example_project' #The default module_name
-            extra_flags: '--data minimal_python_version=${{ matrix.python-version }}'
+            extra_flags: '--data minimal_python_version=${{ python-version }}'
             foldername: 'base_example'
           - name: Provide non-default answers
             module_name: 'drewtonian' # Same module name provided in `extra_flags` on the next line.
-            extra_flags: '--data minimal_python_version=${{ matrix.python-version }} --data project_name=new_science --data package_name=drewtonian --data author_name=Drew --data author_email=ao@aol.com'
+            extra_flags: '--data minimal_python_version=${{ python-version }} --data project_name=new_science --data package_name=drewtonian --data author_name=Drew --data author_email=ao@aol.com'
             foldername: 'non_default_answers'
 
     steps:
