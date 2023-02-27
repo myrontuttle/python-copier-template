@@ -31,13 +31,11 @@ jobs:
           - "3.11"
         include:
           - name: Base example
-            module_name: 'example_project' #The default module_name
-            extra_flags: '--data minimal_python_version=${{ python-version }}'
-            foldername: 'base_example'
+            extra_flags: ""
+            foldername: "base_example"
           - name: Provide non-default answers
-            module_name: 'drewtonian' # Same module name provided in `extra_flags` on the next line.
-            extra_flags: '--data minimal_python_version=${{ python-version }} --data project_name=new_science --data package_name=drewtonian --data author_name=Drew --data author_email=ao@aol.com'
-            foldername: 'non_default_answers'
+            extra_flags: "--data project_name=new_science --data package_name=drewtonian --data author_name=Drew --data author_email=ao@aol.com"
+            foldername: "non_default_answers"
 
     steps:
     - name: Checkout code
@@ -74,6 +72,6 @@ jobs:
         python -m pip install copier
     - name: Generate package
       run: |
-        copier --vcs-ref HEAD --defaults ${{ matrix.extra_flags }} copy ./ ../test/${{ matrix.foldername }}
+        copier --vcs-ref HEAD --defaults --data minimal_python_version=${{ matrix.python-version }} ${{ matrix.extra_flags }} copy ./ ../test/${{ matrix.foldername }}
         cd ../test/${{ matrix.foldername }}
         cat .copier-answers.yml
