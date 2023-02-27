@@ -17,9 +17,7 @@ env:
   PYTHON_VERSIONS: ""
 
 jobs:
-
-  tests:
-    name: ${{ matrix.name }}
+  test-template:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: true
@@ -30,12 +28,7 @@ jobs:
           - "3.10"
           - "3.11"
         include:
-          - name: Base example
-            extra_flags: ""
-            foldername: "base_example"
-          - name: Provide non-default answers
-            extra_flags: "--data project_name=new_science --data package_name=drewtonian --data author_name=Drew --data author_email=ao@aol.com"
-            foldername: "non_default_answers"
+          - foldername: "test-project"
 
     steps:
     - name: Checkout code
@@ -44,34 +37,13 @@ jobs:
       uses: actions/setup-python@v4.5.0
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Set up PDM
-      uses: pdm-project/setup-pdm@v2.5
-      with:
-        python-version: ${{ matrix.python-version }}
-    - name: Set cache variables
-      id: set_variables
-      run: |
-        echo "::set-output name=PIP_CACHE::$(pip cache dir)"
-        echo "::set-output name=PDM_CACHE::$(pdm config cache_dir)"
-    - name: Set up cache
-      uses: actions/cache@v3.2.6
-      with:
-        path: |
-          ${{ steps.set_variables.outputs.PIP_CACHE }}
-          ${{ steps.set_variables.outputs.PDM_CACHE }}
-        key: checks-cache
-    - name: Set up git
-      run: |
-        git config --global user.email "myrongt@gmail.com"
-        git config --global user.name "Myron Tuttle"
-        git config --global init.defaultBranch main
-    - name: Install Python dependencies
+    - name: Install Copier
       run: |
         sudo apt-get update
         python -m pip install --upgrade pip
         python -m pip install copier
-    - name: Generate package
+    - name: Generate project
       run: |
-        copier --vcs-ref HEAD --defaults --data minimal_python_version=${{ matrix.python-version }} ${{ matrix.extra_flags }} copy ./ ../test/${{ matrix.foldername }}
+        copier --vcs-ref HEAD --defaults --data minimal_python_version=${{ matrix.python-version }} copy ./ ../test/${{ matrix.foldername }}
         cd ../test/${{ matrix.foldername }}
         cat .copier-answers.yml
