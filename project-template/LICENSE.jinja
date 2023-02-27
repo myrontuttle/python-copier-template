@@ -579,7 +579,7 @@ ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 {% elif software_license == 'BSD 2-Clause "Simplified" License' -%}
 BSD 2-Clause License
 
-Copyright (c) {{ now().year }}, {{ author_name }}
+Copyright (c) {{ '%Y' | strftime }}, {{ author_name }}
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -606,7 +606,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 {% elif software_license == 'BSD 3-Clause Clear License' -%}
 The Clear BSD License
 
-Copyright (c) {{ now().year }} {{ author_name }}
+Copyright (c) {{ '%Y' | strftime }} {{ author_name }}
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -640,7 +640,7 @@ POSSIBILITY OF SUCH DAMAGE.
 {% elif software_license == 'BSD 3-Clause "New" or "Revised" License' -%}
 BSD 3-Clause License
 
-Copyright (c) {{ now().year }}, {{ author_name }}
+Copyright (c) {{ '%Y' | strftime }}, {{ author_name }}
 All rights reserved.
 
 Redistribution and use in source and binary forms, with or without
@@ -5287,7 +5287,7 @@ Library.
 {% elif software_license == 'ISC License' -%}
 ISC License
 
-Copyright (c) {{ now().year }}, {{ author_name }}
+Copyright (c) {{ '%Y' | strftime }}, {{ author_name }}
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -5721,7 +5721,7 @@ Important Recommendations
 {% elif software_license == 'MIT License' -%}
 MIT License
 
-Copyright (c) {{ now().year }} {{ author_name }}
+Copyright (c) {{ '%Y' | strftime }} {{ author_name }}
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -6239,7 +6239,7 @@ contribution.
 {% elif software_license == 'University of Illinois/NCSA Open Source License' -%}
 University of Illinois/NCSA Open Source License
 
-Copyright (c) {{ now().year }} {{ author_name }}. All rights reserved.
+Copyright (c) {{ '%Y' | strftime }} {{ author_name }}. All rights reserved.
 
 Developed by: [project]
               {{ author_name }}
@@ -6273,7 +6273,7 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS WITH
 THE SOFTWARE.
 
 {% elif software_license == 'SIL Open Font License 1.1' -%}
-Copyright (c) {{ now().year }} {{ author_name }} ({{ author_name_email }})
+Copyright (c) {{ '%Y' | strftime }} {{ author_name }} ({{ author_name_email }})
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:
@@ -6543,7 +6543,7 @@ comply with its license review and certification process.
 {% elif software_license == 'PostgreSQL License' -%}
 PostgreSQL Licence
 
-Copyright (c) {{ now().year }}, {{ author_name }}
+Copyright (c) {{ '%Y' | strftime }}, {{ author_name }}
 
 Permission to use, copy, modify, and distribute this software and its
 documentation for any purpose, without fee, and without a written agreement is
@@ -6590,7 +6590,7 @@ For more information, please refer to <http://unlicense.org>
 {% elif software_license == 'zlib License' -%}
 zlib License
 
-(C) {{ now().year }} {{ author_name }}
+(C) {{ '%Y' | strftime }} {{ author_name }}
 
 This software is provided 'as-is', without any express or implied
 warranty.  In no event will the authors be held liable for any damages
