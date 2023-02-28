@@ -76,8 +76,8 @@ _envops:
 # Tasks executed after project generation or update
 _tasks:
     - "git config --global init.defaultBranch main"
-    - "git config --global user.email "{{ author_email }}"
-    - "git config --global user.name "{{ author_name }}"
+    - 'git config --global user.email "{{ author_email }}"'
+    - 'git config --global user.name "{{ author_name }}"'
     - "git init"
     - "make install"
     - "make format"
