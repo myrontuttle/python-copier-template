@@ -75,9 +75,5 @@ _envops:
   keep_trailing_newline: true
 # Tasks executed after project generation or update
 _tasks:
+    - "git config --global init.defaultBranch main"
     - "git init"
-    - "make install"
-    - "make format"
-    - "git checkout -b initial_branch"
-    - "git add ."
-    - 'git commit -m "Initial commit"'

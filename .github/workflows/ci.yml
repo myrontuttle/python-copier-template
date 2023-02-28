@@ -27,8 +27,6 @@ jobs:
           - "3.9"
           - "3.10"
           - "3.11"
-        include:
-          - foldername: "test-project"
 
     steps:
     - name: Checkout code
@@ -42,8 +40,8 @@ jobs:
         sudo apt-get update
         python -m pip install --upgrade pip
         python -m pip install copier
-    - name: Generate project
+    - name: Generate test project
       run: |
-        copier --vcs-ref HEAD --defaults --data minimal_python_version=${{ matrix.python-version }} copy ./ ../test/${{ matrix.foldername }}
-        cd ../test/${{ matrix.foldername }}
+        copier --vcs-ref HEAD --defaults --data minimal_python_version=${{ matrix.python-version }} copy ./ ../test/test-project
+        cd ../test/test-project
         cat .copier-answers.yml
