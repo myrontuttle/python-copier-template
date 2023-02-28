@@ -23,14 +23,6 @@ repos:
         name: Don't commit to main or master branch
         description: Prevent the user from committing directly to the primary branch.
 
-  - repo: local
-    hooks:
-      - id: pyupgrade
-        name: pyupgrade
-        entry: pdm run pyupgrade --py{{ minimal_python_version|replace('.', '') }}-plus
-        types: [python]
-        language: system
-
     # verify that pyproject.toml is well formed
   - repo: https://github.com/abravalheri/validate-pyproject
     rev: v0.12.1

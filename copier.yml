@@ -42,12 +42,12 @@ minimal_python_version:
 author_name:
     type: str
     help: Your first and last name?
-    default: Firstname Lastname
+    default: Myron Tuttle
 
 author_email:
     type: str
     help: Your preferred email address?
-    default: name@you.com
+    default: myrongt@gmail.com
     
 author_username:
   type: str
@@ -75,12 +75,12 @@ _envops:
   keep_trailing_newline: true
 # Tasks executed after project generation or update
 _tasks:
-    - "git config --global init.defaultBranch main"
+    - 'git config --global init.defaultBranch main'
     - 'git config --global user.email "{{ author_email }}"'
     - 'git config --global user.name "{{ author_name }}"'
-    - "git init"
-    - "make install"
-    - "make format"
-    - "git checkout -b initial_branch"
-    - "git add ."
+    - 'git init'
+    - 'make install'
+    - 'make format'
+    - 'git checkout -b initial_branch'
+    - 'git add .'
     - 'git commit -m "Initial commit"'
