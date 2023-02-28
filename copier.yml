@@ -19,15 +19,15 @@ project_name:
 project_description:
   type: str
   help: Your project description
-  default: Example project
+  default: Example project description
   
 package_name:
     type: str
     help: What is your python package name?
     default: example_package
     validator: >-
-        {% if not (module_name | regex_search('^[a-zA-Z][a-zA-Z0-9\_]+$')) %}
-        module_name must start with a letter, followed one or more letters, digits or underscores all lowercase.
+        {% if not (package_name | regex_search('^[a-zA-Z][a-zA-Z0-9\_]+$')) %}
+        package_name must start with a letter, followed one or more letters, digits or underscores all lowercase.
         {% endif %}
 
 minimal_python_version:
