@@ -23,3 +23,13 @@ updates:
     commit-message:
       prefix: ":arrow_up:"
     open-pull-requests-limit: 50
+
+  - package-ecosystem: "docker"
+    directory: "/.devcontainer"
+    schedule:
+      interval: "weekly"
+    allow:
+      - dependency-type: "all"
+    commit-message:
+      prefix: ":arrow_up:"
+    open-pull-requests-limit: 50
