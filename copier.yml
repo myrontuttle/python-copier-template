@@ -85,6 +85,5 @@ _tasks:
     - 'git add .'
     - 'git commit -m "Initial commit"'
     - 'git fetch'
-    - 'git rebase origin/main'
     - 'git checkout main'
     - 'git merge initial_branch'
