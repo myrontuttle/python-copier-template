@@ -24,7 +24,7 @@ project_description:
 package_name:
     type: str
     help: What is your python package name?
-    default: example_package
+    default: {{ project_name }}
     validator: >-
         {% if not (package_name | regex_search('^[a-zA-Z][a-zA-Z0-9\_]+$')) %}
         package_name must start with a letter, followed one or more letters, digits or underscores all lowercase.
@@ -79,12 +79,4 @@ _tasks:
     - 'git config --global user.email "{{ author_email }}"'
     - 'git config --global user.name "{{ author_name }}"'
     - 'git init'
-    - 'git add README.md'
-    - 'git commit -m "Initial commit"'
-    - 'make install'
-    - 'git checkout -b initial_branch'
-    - 'make format'
-    - 'git add .'
-    - 'git commit -m "Initial commit"'
-    - 'git checkout main'
-    - 'git merge initial_branch'
+    - 'git add . && git commit -m "Initial commit"'
