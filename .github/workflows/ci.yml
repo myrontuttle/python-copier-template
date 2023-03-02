@@ -40,8 +40,10 @@ jobs:
         sudo apt-get update
         python -m pip install --upgrade pip
         python -m pip install copier
-    - name: Generate test project
+    - name: Generate test project, install deps, format, and test
       run: |
         copier --vcs-ref HEAD --defaults --data "minimal_python_version='${{ matrix.python-version }}'" copy ./ ../test/test-project
         cd ../test/test-project
-        cat .copier-answers.yml
+        make install
+        make format
+        make check-all
