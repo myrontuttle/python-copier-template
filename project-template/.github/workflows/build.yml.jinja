@@ -5,32 +5,25 @@ on: [push, pull_request]
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        python-version:
-          - "3.8"
-          - "3.9"
-          - "3.10"
-          - "3.11"
-
     steps:
+
     - name: Checkout
       uses: actions/checkout@v3
 
-    - name: Set up Python ${{ matrix.python-version }}
+    - name: Set up Python {{ minimal_python_version }}
       uses: actions/setup-python@v4.5.0
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: {{ minimal_python_version }}
 
     - name: Set up PDM
       uses: pdm-project/setup-pdm@v3
       with:
-        python-version: ${{ matrix.python-version }}
+        python-version: {{ minimal_python_version }}
 
-    - name: Resolving dependencies
+    - name: Resolve dependencies
       run: pdm lock -v
 
-    - name: Install dependencies
+    - name: Install dev dependencies
       run: pdm install -G docs -G quality -G typing -G security -G tests
 
     - name: Run style checks

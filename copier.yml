@@ -33,7 +33,7 @@ package_name:
 minimal_python_version:
     type: str
     help: What is the minimal python version for this project?
-    default: 3.8
+    default: 3.9
     validator: >-
         {% if not (minimal_python_version | regex_search('^[0-9]\.[0-9]+$')) %}
         minimal_python_version must be of the form #.# (with one or more trailing digits)
@@ -79,8 +79,12 @@ _tasks:
     - 'git config --global user.email "{{ author_email }}"'
     - 'git config --global user.name "{{ author_name }}"'
     - 'git init'
+    - 'git add README.md'
+    - 'git commit -m "Initial commit"'
     - 'make install'
-    - 'make format'
     - 'git checkout -b initial_branch'
+    - 'make format'
     - 'git add .'
     - 'git commit -m "Initial commit"'
+    - 'git checkout main'
+    - 'git merge initial_branch'
