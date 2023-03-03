@@ -29,7 +29,7 @@ Choose where you would like to create your new project and call copier with the 
 >> copier gh:myrontuttle/python-copier-template <path/to/destination>
 ```
 
-After providing answers to the prompts, Copier will hydrate a project template and save it in the specified location. Additionally Copier will run `git init` in the new project directory to initialize it as a local repository.
+After providing answers to the prompts, Copier will hydrate a project template and save it in the specified location. Additionally Copier will run `git init` in the new project directory to initialize it as a local repository and add the copied files to an initial commit on a 'main' branch.
 
 # Python Project Features
 
@@ -55,23 +55,12 @@ You can add multiple dependencies in the same command. You can check the pdm.loc
 	- Build to build and test your project
 	- Publish-to-pypi to publish library releases
 
-## Commit your new project locally
-
-After creating the project files, copier commits the project to the _local_ version control like so with pre-commit checks run.
-
-```
->> git checkout -b initial_branch
-Switched to a new branch 'initial_branch'
->> git add .
->> git commit -m 'Initial commit'
-```
-
 ## Push your work to GitHub
 
 Create a new repository in GitHub: ([GitHub How-to](https://docs.github.com/en/get-started/quickstart/create-a-repo))
 
 ```
->> git remote add origin https://github.com/<the_remote_project>/<the_remote_repository>
+>> git remote add origin https://github.com/<owner>/<remote_repository>
 >> git push origin <local_branch_name>
 ```
 
