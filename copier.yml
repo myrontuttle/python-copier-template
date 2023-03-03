@@ -1,12 +1,4 @@
 # PROMPT --------------------------------
-project_type:
-  type: str
-  help: Is your project for an application or library?
-  default: library
-  choices:
-    - application
-    - library
-  
 project_name:
     type: str
     help: What is the name of your project?
@@ -48,11 +40,6 @@ author_email:
     type: str
     help: Your preferred email address?
     default: myrongt@gmail.com
-    
-author_username:
-  type: str
-  help: Your username (e.g. on GitHub)
-  default: "{{ author_name|lower|replace('_', '-')|replace(' ', '') }}"
 
 software_license:
   type: str
