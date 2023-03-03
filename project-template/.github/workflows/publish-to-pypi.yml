@@ -32,7 +32,7 @@ jobs:
     - name: Set up PDM
       uses: pdm-project/setup-pdm@v3
       with:
-        python-version: {{ minimal_python_version }}
+        python-version:  '3.x'
 
     - name: Resolving dependencies
       run: pdm lock -v
