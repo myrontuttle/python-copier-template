@@ -98,3 +98,8 @@ repos:
             "./docs", # Source directory of documents
             "docs/build/html", # Output directory for rendered documents.
           ]
+
+  - repo: https://github.com/pdm-project/pdm
+    rev: 2.4.6
+    hooks:
+      - id: pdm-lock-check
