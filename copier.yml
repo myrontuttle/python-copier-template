@@ -41,6 +41,11 @@ author_email:
     help: Your preferred email address?
     default: myrongt@gmail.com
 
+author_username:
+  type: str
+  help: Your username (e.g. on GitHub)
+  default: "{{ author_name|lower|replace('_', '-')|replace(' ', '') }}"
+
 software_license:
   type: str
   help: Your project's license?
