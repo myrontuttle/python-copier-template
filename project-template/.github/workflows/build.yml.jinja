@@ -20,11 +20,8 @@ jobs:
       with:
         python-version: {{ minimal_python_version }}
 
-    - name: Resolve dependencies
-      run: pdm lock -v
-
-    - name: Install dev dependencies
-      run: pdm install -G docs -G quality -G typing -G security -G tests
+    - name: Install dependencies
+      run: pdm sync
 
     - name: Run style checks
       run: |
@@ -34,9 +31,9 @@ jobs:
       run: |
         make check-security
 
-    - name: Run tests
+    - name: Run unit tests
       run: |
-        make test
+        make unit-test
 
     # Upload coverage to codecov: https://codecov.io/
     - name: Upload coverage to Codecov
