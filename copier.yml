@@ -71,4 +71,5 @@ _tasks:
     - 'git config --global user.email "{{ author_email }}"'
     - 'git config --global user.name "{{ author_name }}"'
     - 'git init'
-    - 'git add . && git commit -m "Initial commit"'
+    - 'make install'
+    - 'git add . && git commit -m "Initial commit" --no-verify'
