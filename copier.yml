@@ -71,5 +71,5 @@ _tasks:
     - 'git config --global user.email "{{ author_email }}"'
     - 'git config --global user.name "{{ author_name }}"'
     - 'git init'
-    - 'pdm lock'
+    - 'make install'
     - 'git add . && git commit -m "Initial commit"'
