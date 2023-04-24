@@ -4,7 +4,7 @@ build-backend = "pdm.pep517.api"
 
 [project]
 name = "{{ project_name }}"
-version = "0.0.0"
+version = "0.0.1"
 description = "{{ project_description }}"
 authors = [
     {name = "{{ author_name }}", email = "{{ author_email }}"}
@@ -86,13 +86,14 @@ classifiers = [
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3 :: Only",
-    "Topic :: Documentation",
     "Topic :: Software Development",
-    "Topic :: Software Development :: Documentation",
     "Topic :: Utilities",
     "Typing :: Typed",
 ]
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/{{ author_username }}/{{ project_name }}"
 
 [tool.pdm]
 version = {source = "scm"}
@@ -105,35 +106,35 @@ editable-backend = "editables"
 docs = [
     "sphinx>=6.1.3", # Used to automatically generate documentation
     "sphinx_rtd_theme>=1.2.0", # Used to render documentation
-    "sphinx-autoapi>=2.0.1", # Used to automatically generate api documentation
+    "sphinx-autoapi>=2.1.0", # Used to automatically generate api documentation
 ]
 format = [
-    "autoflake>=1.4",
+    "autoflake>=2.1.1",
     "end-of-file>=1.1.0",
-    "black>=23.1",
-    "isort>=5.10",
+    "black>=23.3.0",
+    "isort>=5.12.0",
     "pyupgrade>=3.3.1",
 ]
 quality = [
-    "pre-commit>=3.0.4",
-    "ruff>=0.0.260",
+    "pre-commit>=3.2.2",
+    "ruff>=0.0.262",
 ]
 test = [
     "editables>=0.3",
-    "pytest>=6.2",
+    "pytest>=7.3.1",
 	"pytest-bdd>=6.1.1",
-    "pytest-cov>=3.0",
-    "coverage[toml]>=7.2.0",
-    "pytest-randomly>=3.10",
-    "pytest-xdist>=2.4",
+    "pytest-cov>=4.0.0",
+    "coverage[toml]>=7.2.3",
+    "pytest-randomly>=3.12",
+    "pytest-xdist>=3.2.1",
 ]
 typing = [
-    "mypy>=0.910",
+    "mypy>=1.2.0",
 ]
 security = [
-    "bandit>=1.7.4",
+    "bandit>=1.7.5",
 	"ochrona>=2.0.2",
-	"semgrep>=1.12.0",
+	"semgrep>=1.18.0",
 ]
 
 [tool.black]
