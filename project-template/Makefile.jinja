@@ -8,6 +8,7 @@ PYTHONPATH := `pwd`
 install:
 	pipx install pdm
 	pipx inject pdm pdm-multirun
+	pipx inject pdm pdm-bump
 	pdm install --no-self
 	pdm run pre-commit install
 	pdm run mypy --install-types --non-interactive --config-file pyproject.toml ./
